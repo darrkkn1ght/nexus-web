@@ -312,6 +312,58 @@ function toggleCart() {
     cartSidebar.classList.toggle('open');
 }
 
+// Toggle mobile menu
+function toggleMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    navLinks.classList.toggle('active');
+    
+    // Animate hamburger to X
+    if (navLinks.classList.contains('active')) {
+        toggle.innerHTML = '<span style="transform: rotate(45deg) translate(5px, 5px);"></span><span style="opacity: 0;"></span><span style="transform: rotate(-45deg) translate(7px, -6px);"></span>';
+    } else {
+        toggle.innerHTML = '<span></span><span></span><span></span>';
+    }
+}
+
+// Close mobile menu when clicking on nav items
+function showPageDirect(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+
+    // Show selected page
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+        targetPage.classList.add('active');
+    }
+
+    // Update navigation
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    // Find and activate the correct nav item
+    const activeNavItem = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+    if (activeNavItem) {
+        activeNavItem.classList.add('active');
+    }
+
+    // Update page title
+    updatePageTitle(pageId);
+
+    // Close cart if open
+    document.getElementById('cartSidebar').classList.remove('open');
+    
+    // Close mobile menu if open
+    const navLinks = document.getElementById('navLinks');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        toggle.innerHTML = '<span></span><span></span><span></span>';
+    }
+}
+
 // Show cart animation
 function showCartAnimation() {
     const cartIcon = document.querySelector('.cart-icon');
