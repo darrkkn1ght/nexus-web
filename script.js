@@ -3,7 +3,7 @@ const products = [
     {
         id: 1,
         name: "iPhone 15 Pro Max",
-        price: 850000,
+        price: 1800000,
         description: "Latest Apple flagship with titanium design and A17 Pro chip",
         category: "phones",
         image: "image/iphone-15-pro-max.jpg"
@@ -11,7 +11,7 @@ const products = [
     {
         id: 2,
         name: "Samsung Galaxy S24 Ultra",
-        price: 780000,
+        price: 1600000,
         description: "Premium Android flagship with S Pen and AI features",
         category: "phones",
         image: "image/samsung-s24-ultra.jpg"
@@ -19,7 +19,7 @@ const products = [
     {
         id: 3,
         name: "Apple Watch Series 9",
-        price: 220000,
+        price: 450000,
         description: "Advanced health monitoring with bright Always-On display",
         category: "wearables",
         image: "image/apple-watch-series-9.jpg"
@@ -27,7 +27,7 @@ const products = [
     {
         id: 4,
         name: "AirPods Pro 2nd Gen",
-        price: 135000,
+        price: 280000,
         description: "Active noise cancellation with spatial audio",
         category: "audio",
         image: "image/airpods-pro-2.jpg"
@@ -35,7 +35,7 @@ const products = [
     {
         id: 5,
         name: "MacBook Air M2",
-        price: 950000,
+        price: 1950000,
         description: "Ultra-thin laptop with M2 chip and all-day battery",
         category: "laptops",
         image: "image/macbook-air-m2.jpg"
@@ -43,7 +43,7 @@ const products = [
     {
         id: 6,
         name: "Sony WH-1000XM5",
-        price: 185000,
+        price: 380000,
         description: "Industry-leading noise canceling headphones",
         category: "audio",
         image: "image/sony-wh1000xm5.jpeg"
@@ -51,7 +51,7 @@ const products = [
     {
         id: 7,
         name: "iPad Air 5th Gen",
-        price: 380000,
+        price: 780000,
         description: "Powerful tablet with M1 chip and stunning display",
         category: "tablets",
         image: "image/ipad-air-5.png"
@@ -59,7 +59,7 @@ const products = [
     {
         id: 8,
         name: "Samsung Galaxy Buds2 Pro",
-        price: 95000,
+        price: 195000,
         description: "Premium wireless earbuds with 360 Audio",
         category: "audio",
         image: "image/galaxy-buds2-pro.jpg"
@@ -67,7 +67,7 @@ const products = [
     {
         id: 9,
         name: "HP Pavilion 15",
-        price: 485000,
+        price: 990000,
         description: "Reliable laptop for work and entertainment",
         category: "laptops",
         image: "image/hp-pavilion-15.jpg"
@@ -75,7 +75,7 @@ const products = [
     {
         id: 10,
         name: "Samsung Galaxy Watch 6",
-        price: 165000,
+        price: 340000,
         description: "Smartwatch with advanced health tracking",
         category: "wearables",
         image: "image/galaxy-watch-6.jpg"
@@ -83,7 +83,7 @@ const products = [
     {
         id: 11,
         name: "iPhone 14",
-        price: 520000,
+        price: 1050000,
         description: "Reliable iPhone with excellent camera system",
         category: "phones",
         image: "image/iphone-14.png"
@@ -91,7 +91,7 @@ const products = [
     {
         id: 12,
         name: "Anker PowerCore 20K",
-        price: 25000,
+        price: 52000,
         description: "High-capacity portable charger for all devices",
         category: "accessories",
         image: "image/anker-powercore-20k.jpeg"
@@ -214,7 +214,7 @@ function loadProducts() {
         <div class="product-card" data-category="${product.category}">
             <div class="product-image" style="background-image: url('${product.image}');"></div>
             <h3 class="product-name">${product.name}</h3>
-            <div class="product-price">$${product.price.toLocaleString()}</div>
+            <div class="product-price">₦${product.price.toLocaleString()}</div>
             <p class="product-description">${product.description}</p>
             <button class="add-to-cart" onclick="addToCart(${product.id})">
                 Add to Cart
@@ -289,7 +289,7 @@ function updateCartUI() {
             <div class="cart-item">
                 <div>
                     <h4>${item.name}</h4>
-                    <p>$${item.price.toLocaleString()} × ${item.quantity}</p>
+                    <p>₦${item.price.toLocaleString()} × ${item.quantity}</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <button onclick="updateQuantity(${item.id}, -1)" style="background: #ff6b6b; border: none; color: white; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;">-</button>
@@ -303,7 +303,7 @@ function updateCartUI() {
 
     // Update total
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartTotal.textContent = `Total: $${total.toLocaleString()}`;
+    cartTotal.textContent = `Total: ₦${total.toLocaleString()}`;
 }
 
 // Toggle cart sidebar
@@ -385,7 +385,7 @@ function checkout() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     
-    alert(`Thank you for your purchase!\n\nItems: ${itemCount}\nTotal: $${total.toLocaleString()}\n\nYour order is being processed.`);
+    alert(`Thank you for your purchase!\n\nItems: ${itemCount}\nTotal: ₦${total.toLocaleString()}\n\nYour order is being processed.`);
     
     // Clear cart
     cart = [];
