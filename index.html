@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Future Tech</title>
+    <base href="/">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <nav>
+            <div class="logo" onclick="showPage('home')">NEXUS</div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')" class="nav-item active">Home</a></li>
+                <li><a onclick="showPage('products')" class="nav-item">Products</a></li>
+                <li><a onclick="showPage('about')" class="nav-item">About</a></li>
+                <li><a onclick="showPage('contact')" class="nav-item">Contact</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Future is Here</h1>
+                <p>Discover cutting-edge technology that transforms your world</p>
+                <button class="cta-button" onclick="showPage('products')">Explore Collection</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Products Page -->
+    <div class="page" id="products">
+        <section class="products">
+            <h2 class="section-title">Premium Collection</h2>
+            
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('phones')">Phones</button>
+                <button class="filter-btn" onclick="filterProducts('laptops')">Laptops</button>
+                <button class="filter-btn" onclick="filterProducts('tablets')">Tablets</button>
+                <button class="filter-btn" onclick="filterProducts('wearables')">Wearables</button>
+                <button class="filter-btn" onclick="filterProducts('audio')">Audio</button>
+                <button class="filter-btn" onclick="filterProducts('accessories')">Accessories</button>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div class="page" id="about">
+        <section class="about-content">
+            <div class="about-hero">
+                <h1>About NEXUS</h1>
+                <p style="font-size: 1.2rem; opacity: 0.8;">Pioneering the future of technology</p>
+            </div>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                At NEXUS, we believe technology should enhance human potential, not complicate it. Founded in 2024, we've dedicated ourselves to creating revolutionary products that seamlessly integrate into your daily life while pushing the boundaries of what's possible.
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 style="margin-bottom: 1rem; color: #40e0d0;">Innovation First</h3>
+                    <p>We don't just follow trends—we create them. Our R&D team works tirelessly to bring you technology from the future, today.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 style="margin-bottom: 1rem; color: #40e0d0;">Global Impact</h3>
+                    <p>With customers in over 50 countries, we're building a connected world where technology serves humanity's greatest ambitions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 style="margin-bottom: 1rem; color: #40e0d0;">Premium Quality</h3>
+                    <p>Every product undergoes rigorous testing to ensure it meets our impossibly high standards for performance and durability.</p>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.1rem; margin-top: 2rem;">
+                Join us on this journey as we shape the future, one breakthrough at a time. Welcome to the NEXUS of innovation.
+            </p>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="page" id="contact">
+        <section class="contact-content">
+            <div class="about-hero">
+                <h1>Get in Touch</h1>
+                <p style="font-size: 1.2rem; opacity: 0.8;">We'd love to hear from you</p>
+            </div>
+            
+            <form class="contact-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('products')">Products</a>
+                <a onclick="showPage('about')">About</a>
+                <a onclick="showPage('contact')">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p>&copy; 2025 NEXUS. Crafted by DarkKnight.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; opacity: 0.7;">Your cart is empty</p>
+        </div>
+        <div class="cart-total" id="cartTotal">Total: $0</div>
+        <button class="checkout-btn" onclick="checkout()">Secure Checkout</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
