@@ -13,12 +13,17 @@
     <header>
         <nav>
             <div class="logo" onclick="showPage('home')">NEXUS</div>
-            <ul class="nav-links">
-                <li><a onclick="showPage('home')" class="nav-item active">Home</a></li>
-                <li><a onclick="showPage('products')" class="nav-item">Products</a></li>
-                <li><a onclick="showPage('about')" class="nav-item">About</a></li>
-                <li><a onclick="showPage('contact')" class="nav-item">Contact</a></li>
-            </ul>
+           <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<ul class="nav-links" id="navLinks">
+    <li><a onclick="showPage('home')" class="nav-item active">Home</a></li>
+    <li><a onclick="showPage('products')" class="nav-item">Products</a></li>
+    <li><a onclick="showPage('about')" class="nav-item">About</a></li>
+    <li><a onclick="showPage('contact')" class="nav-item">Contact</a></li>
+</ul>
             <div class="cart-icon" onclick="toggleCart()">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
