@@ -212,7 +212,7 @@ function loadProducts() {
 
     productsGrid.innerHTML = filteredProducts.map(product => `
         <div class="product-card" data-category="${product.category}">
-            <div class="product-image" style="background-image: url('${product.image}');"></div>
+            <div class="product-image" style="background-image: url('${product.image}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
             <h3 class="product-name">${product.name}</h3>
             <div class="product-price">₦${product.price.toLocaleString()}</div>
             <p class="product-description">${product.description}</p>
