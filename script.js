@@ -129,6 +129,13 @@ function getPageFromPath(path) {
     // Remove base path from the URL path
     const relativePath = path.replace(BASE_PATH, '') || '/';
     
+    // Handle 404 page redirects
+    if (path === '/404.html') {
+        // Get the intended page from the URL hash or default to home
+        const hash = window.location.hash.replace('#', '');
+        return hash || 'home';
+    }
+    
     if (relativePath === '/' || relativePath === '/index.html' || relativePath === '') {
         return 'home';
     } else if (relativePath.includes('/products')) {
