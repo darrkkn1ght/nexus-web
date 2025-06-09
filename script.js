@@ -98,6 +98,7 @@ const products = [
     }
 ];
 
+const BASE_PATH = '/nexus-web'; // Your repository name
 let cart = [];
 let currentFilter = 'all';
 
@@ -125,20 +126,24 @@ function handleRoute() {
 }
 
 function getPageFromPath(path) {
-    if (path === '/' || path === '/index.html' || path === '') {
+    // Remove base path from the URL path
+    const relativePath = path.replace(BASE_PATH, '') || '/';
+    
+    if (relativePath === '/' || relativePath === '/index.html' || relativePath === '') {
         return 'home';
-    } else if (path.includes('/products')) {
+    } else if (relativePath.includes('/products')) {
         return 'products';
-    } else if (path.includes('/about')) {
+    } else if (relativePath.includes('/about')) {
         return 'about';
-    } else if (path.includes('/contact')) {
+    } else if (relativePath.includes('/contact')) {
         return 'contact';
     }
     return 'home'; // default
 }
 
 function navigateToPage(pageId) {
-    const newUrl = pageId === 'home' ? '/' : `/${pageId}`;
+    // Create URLs with the base path
+    const newUrl = pageId === 'home' ? BASE_PATH + '/' : BASE_PATH + '/' + pageId;
     window.history.pushState({ page: pageId }, '', newUrl);
     showPageDirect(pageId);
 }
@@ -468,7 +473,7 @@ function addLoadingState(element) {
 
 // Right-click context menu for opening pages in new tabs
 function openInNewTab(pageId) {
-    const newUrl = pageId === 'home' ? '/' : `/${pageId}`;
+    const newUrl = pageId === 'home' ? BASE_PATH + '/' : BASE_PATH + '/' + pageId;
     window.open(newUrl, '_blank');
 }
 
